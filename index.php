@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php
+	require_once('dbconnect.php');
+
+  if(isset($_POST['submitSubcriptions'])){
+    // 2 fetch from data
+    $email=$_POST["email"];
+    //3. SQL Query to insert data to database
+    $queryData=mysqli_query($conn,"INSERT INTO subscribers (email) VALUES('$email')");
+    //4.check if data inserted
+    
+    }
+?>
     <nav class="navbar navbar-expand-lg bg-transparent">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Zalego Academy</a>
@@ -91,16 +103,18 @@
         <p>Subscribe to get information, latest news about Zalego Academy</p>
     </div>
     <section class="container">
+      <form action="index.php" method="post">
         <div class="row">
             <div class="col-lg-7">
                 <div class="form-group ">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email address">
+                    <input type="email" class="form-control" id=""  placeholder="Your email address" name="email">
                   </div>
             </div>
             <div class="col-lg-5">
-                <button class="btn btn-warning">Subscribe</button>
+                <button class="btn btn-warning" name="submitSubcriptions" type="submit">Subscribe</button>
             </div>
         </div>
+       </form>
        
     </section>
     <div class="container">
